@@ -1,7 +1,8 @@
+import dayjs from "dayjs";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import DropZone from "./components/DropZone";
 import Table from "./components/Table";
 import { useFileStore } from "./store";
-import dayjs from "dayjs";
 const App = () => {
   const excelContent = useFileStore((state) => state.excelContent);
   const fileName = useFileStore((state) => state.fileName);
@@ -33,34 +34,42 @@ const App = () => {
     a.click();
   };
   return (
-    <div className="w-full h-screen bg-gray-100">
-      <div className="flex flex-col w-full h-full max-w-5xl gap-5 p-5 mx-auto">
-        <div className="max-w-4xl text-3xl font-semibold tracking-wide text-center text-gray-700 uppercase">
-          Free Excel to csv converter
+    <HelmetProvider>
+      <Helmet>
+        <title>Free Excel to CSV Converter</title>
+        <meta name="description" value="Free Excel to CSV Converter" />
+        <meta name="author" value="Koassi Akakpo (akakpo.koassi@gmail.com)" />
+        <meta name="keywords" value="Excel,CSV,React,Tailwind" />
+      </Helmet>
+      <div className="w-full h-screen bg-gray-100">
+        <div className="flex flex-col w-full h-full max-w-5xl gap-5 p-5 mx-auto">
+          <div className="max-w-4xl text-3xl font-semibold tracking-wide text-center text-gray-700 uppercase">
+            Free Excel to csv converter
+          </div>
+          <DropZone />
+          <Table />
+          <div className="flex justify-between w-full mt-auto">
+            <button
+              className="btn btn-sm"
+              disabled={!excelContent}
+              onClick={resetExcelContent}
+            >
+              Annuler
+            </button>
+            <button
+              className="btn btn-neutral btn-sm"
+              disabled={!excelContent}
+              onClick={download}
+            >
+              Télécharger le fichier CSV
+            </button>
+          </div>
+          <footer className="text-sm text-center text-gray-400">
+            ⓒ <a href="mailto:akakpo.koassi@gmail.com">Koassi Akakpo</a>
+          </footer>
         </div>
-        <DropZone />
-        <Table />
-        <div className="flex justify-between w-full mt-auto">
-          <button
-            className="btn btn-sm"
-            disabled={!excelContent}
-            onClick={resetExcelContent}
-          >
-            Annuler
-          </button>
-          <button
-            className="btn btn-neutral btn-sm"
-            disabled={!excelContent}
-            onClick={download}
-          >
-            Télécharger le fichier CSV
-          </button>
-        </div>
-        <footer className="text-sm text-center text-gray-400">
-          ⓒ <a href="mailto:akakpo.koassi@gmail.com">Koassi Akakpo</a>
-        </footer>
       </div>
-    </div>
+    </HelmetProvider>
   );
 };
 
