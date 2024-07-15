@@ -1,5 +1,5 @@
 import { useFileStore } from "../store";
-import dayjs from "dayjs";
+import { transformColumn } from "../utils";
 
 const Table = () => {
   const excelContent = useFileStore((state) => state.excelContent);
@@ -19,11 +19,7 @@ const Table = () => {
             {excelContent.slice(1).map((row, i) => (
               <tr key={i} className={i % 2 === 0 ? "bg-gray-50" : ""}>
                 {row.map((col, j) => (
-                  <td key={j}>
-                    {col instanceof Date
-                      ? dayjs(col).format("MM-DD-YYYY")
-                      : col}
-                  </td>
+                  <td key={j}>{transformColumn(col)}</td>
                 ))}
               </tr>
             ))}

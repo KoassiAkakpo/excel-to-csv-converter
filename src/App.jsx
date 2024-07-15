@@ -3,6 +3,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import DropZone from "./components/DropZone";
 import Table from "./components/Table";
 import { useFileStore } from "./store";
+import { transformColumn } from "./utils";
 const App = () => {
   const excelContent = useFileStore((state) => state.excelContent);
   const fileName = useFileStore((state) => state.fileName);
@@ -10,11 +11,7 @@ const App = () => {
   const download = () => {
     const data = excelContent
       .map((row) => {
-        return row
-          .map((col) =>
-            col instanceof Date ? dayjs(col).format("MM-DD-YYYY") : col
-          )
-          .join(";");
+        return row.map((col) => transformColumn(col)).join(";");
       })
       .join("\n");
 
@@ -37,9 +34,11 @@ const App = () => {
     <HelmetProvider>
       <Helmet>
         <title>Free Excel to CSV Converter</title>
-        <meta name="description" value="Free Excel to CSV Converter" />
-        <meta name="author" value="Koassi Akakpo (akakpo.koassi@gmail.com)" />
-        <meta name="keywords" value="Excel,CSV,React,Tailwind" />
+        <meta name="description" content="Free Excel to CSV Converter" />
+        <meta name="author" content="Koassi Akakpo (akakpo.koassi@gmail.com)" />
+        <meta name="keywords" content="Excel,CSV,React,Tailwind" />
+        <meta name="title" content="Free Online  Excel to CSV Converter" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
       </Helmet>
       <div className="w-full h-screen bg-gray-100">
         <div className="flex flex-col w-full h-full max-w-5xl gap-5 p-5 mx-auto">
