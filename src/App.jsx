@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import DropZone from "./components/DropZone";
 import Table from "./components/Table";
@@ -8,6 +7,12 @@ const App = () => {
   const excelContent = useFileStore((state) => state.excelContent);
   const fileName = useFileStore((state) => state.fileName);
   const resetExcelContent = useFileStore((state) => state.resetExcelContent);
+
+  const reset = () => {
+    resetExcelContent();
+    document.getElementById("dropzone").value = null;
+  };
+
   const download = () => {
     const data = excelContent
       .map((row) => {
@@ -40,18 +45,18 @@ const App = () => {
         <meta name="title" content="Free Online  Excel to CSV Converter" />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
       </Helmet>
-      <div className="w-full h-screen bg-gray-100">
+      <div className="h-screen">
         <div className="flex flex-col w-full h-full max-w-5xl gap-5 p-5 mx-auto">
           <div className="max-w-4xl text-3xl font-semibold tracking-wide text-center text-gray-700 uppercase">
             Free Excel to csv converter
           </div>
           <DropZone />
           <Table />
-          <div className="flex justify-between w-full mt-auto">
+          <div className="flex justify-between w-full">
             <button
               className="btn btn-sm"
               disabled={!excelContent}
-              onClick={resetExcelContent}
+              onClick={reset}
             >
               Annuler
             </button>
@@ -63,7 +68,7 @@ const App = () => {
               Télécharger le fichier CSV
             </button>
           </div>
-          <footer className="text-sm text-center text-gray-400">
+          <footer className="mt-auto text-sm text-center text-gray-400">
             ⓒ <a href="mailto:akakpo.koassi@gmail.com">Koassi Akakpo</a>
           </footer>
         </div>

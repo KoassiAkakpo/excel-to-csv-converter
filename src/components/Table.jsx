@@ -5,7 +5,7 @@ const Table = () => {
   const excelContent = useFileStore((state) => state.excelContent);
 
   return (
-    <div className="h-full mt-3 overflow-auto bg-white divide-y divide-gray-200 shadow-sm rounded-xl ring-1 ring-gray-950/5">
+    <div className="overflow-auto bg-white divide-y divide-gray-200 shadow-sm h-96 min-h-60 rounded-xl ring-1 ring-gray-950/5">
       {excelContent ? (
         <table className="table table-pin-rows">
           <thead>

@@ -1,5 +1,6 @@
 import readXlsxFile from "read-excel-file";
 import { useFileStore } from "../store";
+
 const DropZone = () => {
   const addExcelContent = useFileStore((state) => state.addExcelContent);
   const setFileName = useFileStore((state) => state.setFileName);
