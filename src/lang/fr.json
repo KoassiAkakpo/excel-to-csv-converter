@@ -1,0 +1,9 @@
+{
+  "app.no_file": "Pas de fichier chargé",
+  "app.file": "Fichier Excel à convertir en CSV",
+  "app.upload": "Charger le fichier ici",
+  "app.title": "Convertisseur Excel vers CSV gratuit",
+  "app.description": "Convertisseur Excel vers CSV gratuit",
+  "app.download": "Télécharger le fichier CSV",
+  "app.cancel": "Annuler"
+}

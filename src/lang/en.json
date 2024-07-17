@@ -1,0 +1,9 @@
+{
+  "app.no_file": "No file loaded",
+  "app.file": "Excel file to convert to CSV",
+  "app.upload": "Upload file here",
+  "app.title": "Free Excel to CSV converter",
+  "app.description": "Free Excel to CSV converter",
+  "app.download": "Download CSV file",
+  "app.cancel": "Cancel"
+}

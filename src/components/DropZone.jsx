@@ -1,5 +1,6 @@
 import readXlsxFile from "read-excel-file";
 import { useFileStore } from "../store";
+import { FormattedMessage } from "react-intl";
 
 const DropZone = () => {
   const addExcelContent = useFileStore((state) => state.addExcelContent);
@@ -34,10 +35,16 @@ const DropZone = () => {
           />
         </svg>
         <h2 className="mt-1 font-medium tracking-wide text-gray-700">
-          Fichier Excel à convertir en CSV
+          <FormattedMessage id="app.file" />
         </h2>
         <p className="mt-2 text-xs tracking-wide text-gray-500">
-          {fileName ? fileName : "Charger le fichier ici"}
+          {fileName ? (
+            fileName
+          ) : (
+            <span>
+              <FormattedMessage id="app.upload" />
+            </span>
+          )}
         </p>
         <input
           id="dropzone"

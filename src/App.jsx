@@ -1,4 +1,5 @@
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import { FormattedMessage } from "react-intl";
 import DropZone from "./components/DropZone";
 import Table from "./components/Table";
 import { useFileStore } from "./store";
@@ -48,7 +49,7 @@ const App = () => {
       <div className="h-screen">
         <div className="flex flex-col w-full h-full max-w-5xl gap-5 p-5 mx-auto">
           <div className="max-w-4xl text-3xl font-semibold tracking-wide text-center text-gray-700 uppercase">
-            Free Excel to csv converter
+            <FormattedMessage id="app.description" />
           </div>
           <DropZone />
           <Table />
@@ -58,14 +59,14 @@ const App = () => {
               disabled={!excelContent}
               onClick={reset}
             >
-              Annuler
+              <FormattedMessage id="app.cancel" />
             </button>
             <button
               className="btn btn-neutral btn-sm"
               disabled={!excelContent}
               onClick={download}
             >
-              Télécharger le fichier CSV
+              <FormattedMessage id="app.download" />
             </button>
           </div>
           <footer className="mt-auto text-sm text-center text-gray-400">

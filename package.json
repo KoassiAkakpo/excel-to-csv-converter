@@ -12,10 +12,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.3.1",
     "dayjs": "^1.11.11",
+    "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-helmet-async": "^2.0.5",
+    "react-intl": "^6.6.8",
     "read-excel-file": "^5.8.3",
     "zustand": "^4.5.4"
   },

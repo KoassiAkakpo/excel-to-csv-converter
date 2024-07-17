@@ -1,3 +1,4 @@
+import { FormattedMessage } from "react-intl";
 import { useFileStore } from "../store";
 import { transformColumn } from "../utils";
 
@@ -27,7 +28,9 @@ const Table = () => {
         </table>
       ) : (
         <div className="flex items-center justify-center w-full h-full">
-          <div className="text-sm text-gray-500">Pas de fichier chargé</div>
+          <div className="text-sm text-gray-500">
+            <FormattedMessage id="app.no_file" />
+          </div>
         </div>
       )}
     </div>
